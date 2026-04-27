@@ -2,10 +2,10 @@
 
 import streamlit as st
 
-SEPARATOR_DEFAULT = " "
+DEFAULT_SEPARATOR = " "
 
 
-def merge_lines(line1: str, line2: str, separator: str = SEPARATOR_DEFAULT) -> str:
+def merge_lines(line1: str, line2: str, separator: str = DEFAULT_SEPARATOR) -> str:
     """Merge two lines of text into a single line joined by *separator*."""
     return f"{line1}{separator}{line2}"
 
@@ -30,11 +30,14 @@ def render() -> None:
 
     separator = st.text_input(
         "Separator (between the two lines)",
-        value=SEPARATOR_DEFAULT,
+        value=DEFAULT_SEPARATOR,
         help="Character(s) used to join the two lines. Defaults to a single space.",
     )
 
     if st.button("Merge", type="primary"):
-        merged = merge_lines(line1, line2, separator)
-        st.success(f"**Merged result:** {merged}")
-        st.code(merged, language=None)
+        if not line1 and not line2:
+            st.warning("Please enter at least one line of text before merging.")
+        else:
+            merged = merge_lines(line1, line2, separator)
+            st.success(f"**Merged result:** {merged}")
+            st.code(merged, language=None)
