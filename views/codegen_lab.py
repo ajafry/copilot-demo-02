@@ -13,7 +13,7 @@ import streamlit as st
 
 def reverse_string(text: str) -> str:
     """Return the reverse of the given string."""
-    pass
+    return text[::-1]
 
 
 def is_palindrome(text: str) -> bool:
@@ -21,7 +21,8 @@ def is_palindrome(text: str) -> bool:
 
     Ignore case and non-alphanumeric characters.
     """
-    pass
+    cleaned = "".join(ch.lower() for ch in text if ch.isalnum())
+    return cleaned == cleaned[::-1]
 
 
 def fizzbuzz(n: int) -> list[str]:
@@ -32,12 +33,22 @@ def fizzbuzz(n: int) -> list[str]:
     - Multiples of both → 'FizzBuzz'
     - Otherwise → the number as a string
     """
-    pass
+    result = []
+    for i in range(1, n + 1):
+        if i % 3 == 0 and i % 5 == 0:
+            result.append("FizzBuzz")
+        elif i % 3 == 0:
+            result.append("Fizz")
+        elif i % 5 == 0:
+            result.append("Buzz")
+        else:
+            result.append(str(i))
+    return result
 
 
 def celsius_to_fahrenheit(celsius: float) -> float:
     """Convert a temperature from Celsius to Fahrenheit."""
-    pass
+    return (celsius * 9/5) + 32
 
 
 def count_vowels(text: str) -> int:
