@@ -41,6 +41,11 @@
 - Name test files `test_<module>.py` and test functions `test_<behavior>`.
 - Each test should be independent and test a single behavior.
 
+## Depedencies
+
+- Always ensure that the virtual environment is activated before installing dependencies.
+- Only use uv to install dependencies, never use pip directly. For example, use `uv install <package>` instead of `pip install <package>`.
+
 ## Documentation
 
 - Add docstrings to public modules, classes, and functions.
