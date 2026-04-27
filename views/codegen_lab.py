@@ -56,12 +56,19 @@ def count_vowels(text: str) -> int:
 
     Case-insensitive.
     """
-    pass
+    vowels = "aeiou"
+    return sum(1 for ch in text.lower() if ch in vowels)
 
 
 def find_max(numbers: list[int]) -> int:
     """Return the largest number in the list without using the built-in max()."""
-    pass
+    if not numbers:
+        raise ValueError("The list is empty.")
+    max_num = numbers[0]
+    for num in numbers[1:]:
+        if num > max_num:
+            max_num = num
+    return max_num
 
 
 # ---------------------------------------------------------------------------
